@@ -16,20 +16,19 @@
 
 
     $error = '';
-
-   $length = '';
-   $check_pass = '';
-   $check_email = '';
+    $length = '';
+    $check_pass = '';
+    $check_email = '';
 
 
     if(isset($_POST['register'])){
 
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $password = md5($_POST['pass']);
-    $con_password = md5($_POST['con_pass']);
-    $dob = $_POST['date_of_birth'];
-    $contact = $_POST['contact'];
+    $name =mysqli_escape_string($conn,$_POST['name']) ;
+    $email = mysqli_escape_string($conn,$_POST['email']);
+    $password =mysqli_escape_string($conn,$_POST['pass']);
+    $con_password = mysqli_escape_string($conn,$_POST['con_pass']);
+    $dob = mysqli_escape_string($conn,$_POST['date_of_birth']);
+    $contact =mysqli_escape_string($conn,$_POST['contact']);
 
     //validation email already exits
     $email_exits = "SELECT email FROM admin_reg_table WHERE email = '$email'";
@@ -53,34 +52,38 @@
          }
          else{
 
+            $password = md5($password);
+
             $vkey = md5(time().$email);
 
            // echo "<script>alert('$vkey')</script>";
 
 
-            $sql = "INSERT INTO admin_reg_table (name,email,pass,con_pass,dob,contact,v_key,v_status)VALUES('$name','$email','$password','$con_password','$dob','$contact','$v_key',0)";
+            $sql = "INSERT INTO admin_reg_table (name,email,pass,con_pass,dob,contact,v_key,v_status)VALUES('$name','$email','$password','$con_password','$dob','$contact','$vkey',0)";
             $query = mysqli_query($conn,$sql);
 
             if($query){
                 $mail = new PHPMailer; //this is object
                 /*set phpmailer to use smtp*/
-               $mail -> isSMTP();
+               $mail->isSMTP();
                //this is fixed
-                $mail ->Host = "smtp.gmail.com";
+                $mail->Host = "smtp.gmail.com";
                 $mail->SMTPAuth = true;
-                $mail->Username ="abidhasan201616@gmail.com";
-                $mail->Password = "150599@bid";
+                $mail->Username ="sonjoyroy128@gmail.com";
+                $mail->Password = "adhkaroy";
 
                 $mail->SMTPSecure = "tls";
                 $mail->Port = 587;
-                $mail->From = "From Email";
-                $mail->FromName = "The name of the message will see";
+                $mail->From = "sonjoyroy128@gmail.com";
+                $mail->FromName = "Al-amin";
 
 
-                $mail ->addAddress($email,"Al-amin here");
+                $mail->addAddress($email,"Al-amin here");
                 $mail->isHTML(true);
-                $mail ->Subject = "Email Verification From" ;
-                $mail ->Boby = "<a href='http://localhost/AmarDokan/verify.php?v_key=$vkey'>Click to Verify Now</a>";
+                $mail->Subject = "Email Verification From" ;
+
+                $mail->Body = "<a href='http://localhost/AmarDokan/verify.php?v_key=$vkey'>Click to Verify Now</a>";
+
                 if(!$mail->send()){
                     echo "Mailer Error".$mail->ErrorInfo;
                 }
