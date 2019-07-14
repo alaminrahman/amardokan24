@@ -69,8 +69,8 @@
                //this is fixed
                 $mail->Host = "smtp.gmail.com";
                 $mail->SMTPAuth = true;
-                $mail->Username ="sonjoyroy128@gmail.com";
-                $mail->Password = "adhkaroy";
+                $mail->Username ="sonjoyroy128@gmail.com (here your email)";
+                $mail->Password = "here your password";
 
                 $mail->SMTPSecure = "tls";
                 $mail->Port = 587;
