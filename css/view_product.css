@@ -1,0 +1,79 @@
+.view_product{
+    width: 700px;
+    height: 500px;
+    background: gray;
+    margin-left: 400px;
+    margin-top: 30px;
+
+}
+.view_product>.left{
+    width: 300px;
+    height: 100%;
+    float: left;
+    background: red;
+
+}
+.view_product>.left>.pro_img{
+    width: 100%;
+    height: 335px;
+
+}
+.view_product>.left>.pro_des{
+    width: 100%;
+    height: 105px;
+    background: gray;
+    padding: 0px 10px;
+}
+.view_product>.left>.pro_deli{
+    width: 100%;
+    height: 60px;
+    background: rgb(95, 82, 82);
+    padding: 0px 10px;
+}
+.view_product>.left>.pro_des p{
+    margin: 0px;
+    padding: 0px;
+    
+}
+.view_product>.left>.pro_deli p{
+    margin: 0px;
+    padding: 0px;
+    line-height: 60px;
+    text-align: center;
+    
+}
+
+
+.view_product>.right{
+    width: 400px;
+    height: 100%;
+    background: green;
+    float: left;
+}
+.view_product>.right>.pro_info{
+    width: 100%;
+    height: 100%;
+    background: yellow;
+}
+
+table{
+    width: 100%;
+}
+table tr{
+    border: 1px solid black;
+    padding-left: 10px;
+}
+table tr td {
+	height: 50px;
+	padding-left: 10px;
+}
+table tr .btnadd {
+    text-align: center;
+    background: red;
+    height: 80px;
+}
+table tr .btnpay {
+    text-align: center;
+    background: green;
+    height: 69px;
+}

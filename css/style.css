@@ -1,0 +1,110 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+.navbar{
+    background:rgba(105, 211, 193, 0.986);
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+}
+.navbar>.navbar-brand>img{
+    box-shadow: 0px 0px 0px 8px gray;
+}
+.navbar-collapse{}
+.navbar-collapse>.navbar-nav{
+  text-transform: uppercase;
+}
+.navbar-collapse>.navbar-nav>li{
+    margin-left: 15px;
+    
+  }
+  .navbar > .navbar-collapse > .navbar-nav > li a {
+	color: rgb(255, 233, 62);
+	font-weight: 700;
+	text-align: center;
+}
+  .navbar>.navbar-collapse>.navbar-nav>li a:hover{
+    color: yellow;
+    
+}
+/*-------------main body start------*/
+.main_body{
+    margin-top: 90px;
+}
+/*-------------main body end------*/
+
+/*-------------left side start------*/
+.left_side{
+    background: rgba(9, 187, 157, 0.986);
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+}
+/*-------------left side end------*/
+
+/*------------- product home start------*/
+.products_home{
+    width: 100%;
+    margin: 30px 0px;
+}
+
+
+.products {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    z-index: 11;
+  }
+  .products:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    transform: scale(1.1);
+	z-index: -111;
+  }
+  
+  .price {
+    color: grey;
+    font-size: 22px;
+  }
+  .products .btnview {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: rgb(243, 168, 6);
+    text-align: center;
+    cursor: pointer;
+    display: inline;
+    font-size: 18px;
+  }
+
+  .products button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: rgb(243, 168, 6);
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .products button a {
+    text-decoration: none;
+    color: white;
+  }
+
+  
+  .products button:hover {
+    background-color: rgb(216, 149, 6);
+  }
+
+
+/*------------- product home end------*/
