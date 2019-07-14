@@ -1,3 +1,42 @@
+
+<?php
+
+    include 'connect.php';
+
+    
+   
+
+    if(isset($_POST['login'])){
+
+      $username = $_POST['uname'];
+      $password = $_POST['pass'];
+
+      $sql = "SELECT * FROM admin_reg_table WHERE email = '$username' AND pass = '$password'";
+      $query = mysqli_query($conn,$sql);
+
+      if($query){
+        header('location:admin_panel.php');
+        echo "<script>alert('Login Success')</script>";
+      }
+      else{
+         echo "<script>alert('Userid or Password Wrong')</script>";
+      }
+
+
+    }
+
+
+?>
+
+
+
+
+
+
+
+
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -26,7 +65,7 @@
                 <div class=" col-md-6 ">
                     <div class="form">
                         <h2 class="text-center">Admin Login</h2>
-                      <form action="action_page.php">
+                      <form method="POST" action="?">
                       <div class="imgcontainer">
                         <img src="img/profile.png" alt="profile" class="avatar">
                       </div>
@@ -36,9 +75,9 @@
                         <input type="text" placeholder="Enter email" name="uname" required>
 
                         <label for="psw"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="psw" required>
+                        <input type="password" placeholder="Enter Password" name="pass" required>
 
-                        <button type="submit">Login</button>
+                        <button type="submit" name="login">Login</button>
                         <button type="text"><a href="admin_registration.html">Create Account</a></button>
                         
                         <label>
