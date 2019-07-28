@@ -29,6 +29,7 @@
     $con_password = mysqli_escape_string($conn,$_POST['con_pass']);
     $dob = mysqli_escape_string($conn,$_POST['date_of_birth']);
     $contact =mysqli_escape_string($conn,$_POST['contact']);
+    $address =mysqli_escape_string($conn,$_POST['address']);
 
     //validation email already exits
     $email_exits = "SELECT email FROM admin_reg_table WHERE email = '$email'";
@@ -59,7 +60,7 @@
            // echo "<script>alert('$vkey')</script>";
 
 
-            $sql = "INSERT INTO admin_reg_table (name,email,pass,con_pass,dob,contact,v_key,v_status)VALUES('$name','$email','$password','$con_password','$dob','$contact','$vkey',0)";
+            $sql = "INSERT INTO admin_reg_table (name,email,pass,con_pass,dob,contact,address,v_key,v_status)VALUES('$name','$email','$password','$con_password','$dob','$contact','$address','$vkey',0)";
             $query = mysqli_query($conn,$sql);
 
             if($query){
@@ -91,6 +92,7 @@
                     echo"<script>alert('Verification has been sent successfully')</script>";
                 }
                 header("location:success.php");
+                header("location:admin_login.php");
 
             }
              else{
@@ -165,15 +167,17 @@
                             <span class="text text-danger"><?=$error?> <?=$length?></span>
                         </div>
                         
-                       
-                       
-
-                       
-                       
                         <div class="form-group">
                             <label for="email"><b>Email</b></label>
                             <input type="text" placeholder="Enter Email" name="email" >
                            <span class="text text-danger"><?=$error?> <?=$check_email?></span>
+                       </div>
+                       
+                       
+                        <div class="form-group">
+                            <label for="address"><b>Address</b></label>
+                            <input type="text" placeholder="Enter address" name="address" >
+                           <span class="text text-danger"><?=$error?></span>
                        </div>
 
                         

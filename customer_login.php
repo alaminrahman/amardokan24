@@ -1,3 +1,44 @@
+
+<?php 
+
+  include 'connect.php';
+
+
+
+session_start();
+if(isset($_POST['login'])){
+ 
+  $email = mysqli_real_escape_string($conn,$_POST['email']);
+  $password = mysqli_real_escape_string($conn,$_POST['password']);
+
+    $sql = "SELECT * FROM customer_reg_table WHERE email = '$email' AND pass = '$password'";
+    $query = mysqli_query($conn,$sql);
+
+    if(mysqli_num_rows($query)>=1){
+
+        $_SESSION['login_user']=$email;      
+
+       // header('location:cus_profile.php');
+        header('location:customer/cus_profile1.php');
+
+      
+    }
+    else{
+      echo "Wrong";
+    }
+
+}
+
+
+
+?>
+
+
+
+
+
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -26,23 +67,24 @@
                 <div class=" col-md-6 ">
                     <div class="form">
                         <h2 class="text-center">Customer Login</h2>
-                      <form action="action_page.php">
+
+                      <form method="POST" action="?">
                       <div class="imgcontainer">
                         <img src="img/profile.png" alt="profile" class="avatar">
                       </div>
 
                       <div class="login_pad">
                         <label for="uname"><b>Email</b></label>
-                        <input type="text" placeholder="Enter email" name="uname" required>
+                        <input type="text" placeholder="Enter email" name="email">
 
                         <label for="psw"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="psw" required>
+                        <input type="password" placeholder="Enter Password" name="password">
 
-                        <button type="submit">Login</button>
+                        <button type="submit" name="login">Login</button>
                         <button type="text"><a href="customer_registration.php">Create Account</a></button>
                         
                         <label>
-                          <input type="checkbox" checked="checked" name="remember"> Remember me
+                          <input type="checkbox" checked="" name="remember"> Remember me
                         </label>
                       </div>
 

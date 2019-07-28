@@ -1,4 +1,69 @@
 
+<?php
+
+    include 'connect.php';
+
+
+    $error = '';
+    $email_exits = '';
+    $check_pass= '';
+    $exists_query ='';
+
+
+   if(isset($_POST['register'])){
+
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $contact = $_POST['contact'];
+    $address = $_POST['address'];
+    $password = $_POST['password'];
+    $con_pass = $_POST['con_pass'];
+
+   
+    $sql = "SELECT * FROM customer_reg_table WHERE email == '$email' ";
+    $exists_query = mysqli_query($conn,$sql);
+
+
+    if(empty($name) || empty($email) || empty($contact) || empty($address) || empty($password) || empty($con_pass)){
+
+        $error = "This filed is empty";
+       
+    }
+
+
+    elseif($exists_query){
+        $email_exits = "This email already exists";
+        
+    }
+
+   
+    elseif ($password !==$con_pass) {
+       $check_pass = 'Confirm password not match';
+    }
+    else{
+        $add_data_sql = "INSERT INTO customer_reg_table (name,email,contact,address,pass,con_password)VALUES('$name','$email','$contact','$address','$password','$con_pass')";
+        $query = mysqli_query($conn,$add_data_sql);
+
+        if($query){
+            header('location:customer_login.php');
+            echo "<script>alert('Registraion Success!')</script>";
+        }
+        else{
+            echo "<script>alert('Something went to wrong!')</script>";
+        }
+    }
+
+    
+
+
+
+
+}
+
+
+
+
+?>
 
 
 
@@ -51,34 +116,44 @@
                        
                         
                         <label for="name"><b>Full Name</b></label>
-                        <input type="text" placeholder="Enter your name" name="name" required>
-                       
+                        <input type="text" placeholder="Enter your name" name="name" >
+
+                        <span style="color: red;"><?=  $error ?></span>
+                       <br/>
                        
                         <label for="email"><b>Email</b></label>
-                        <input type="text" placeholder="Enter Email" name="email" required>
-                        
+                        <input type="text" placeholder="Enter Email" name="email" > 
+                        <span style="color: red;"><?=  $error ?> <?= $email_exits ?></span>
+
+                        <br/>
                         <label for="contact"><b>Contact Number</b></label>
-                        <input type="text" placeholder="Enter your contact number" name="contact" required>
+                        <input type="text" placeholder="Enter your contact number" name="contact" >
+                        <span style="color: red;"><?=  $error ?></span>
                         
+                        <br/>
                         <label for="address"><b>Address</b></label>
-                        <input type="text" placeholder="Enter your address" name="address" required>
+                        <input type="text" placeholder="Enter your address" name="address" >
+                        <span style="color: red;"><?=  $error ?></span>
                         
-
+                        <br/>
                         <label for="psw"><b>Create Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="psw" required>
+                        <input type="password" placeholder="Enter Password" name="password">
+                        <span style="color: red;"><?=  $error ?> </span>
 
+                        <br/>
                         <label for="psw-repeat"><b>Confirm Password</b></label>
-                        <input type="password" placeholder="Confirm Password" name="psw-repeat" required>
+                        <input type="password" placeholder="Confirm Password" name="con_pass">
+                        <span style="color: red;"><?=  $error ?> <?=$check_pass?></span>
                                     
-                        
+                        <br/>
                         <label for="photo"><b>Photo</b></label>
-                        <input type="file" placeholder="" name="photo" required>
+                        <input type="file" placeholder="" name="photo">
                         
                         <hr>
 
                         <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
                         
-                        <button type="submit" class="registerbtn">Register</button>
+                        <button type="submit" name="register" class="registerbtn">Register</button>
                         
                         
                         <button type="reset" class="resetbtn">Reset</button>

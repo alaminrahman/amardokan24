@@ -17,6 +17,8 @@ input[type=text], input[type=password],input[type=phone] {
 }
 
 /* Set a style for all buttons */
+
+
 button[type="submit"] {
   background-color: #4CAF50;
   color: white;

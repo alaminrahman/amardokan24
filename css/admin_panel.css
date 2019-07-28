@@ -4,3 +4,27 @@ table{
 .hoverr:hover{
     background: rgb(9, 130, 211);
 }
+
+.left_side{
+	margin-top: 100px;
+}
+ul{
+	padding: 0px;
+	text-align: center;
+	text-decoration: none;
+}
+ul li{
+	list-style: none;
+	text-decoration: none;
+}
+
+ul li a{
+	text-decoration: none;
+	color: white;
+	text-align: center;
+
+}
+
+ul li a:hover{
+	color: yellow;
+}

@@ -65,7 +65,7 @@ body{
     text-align: center;
     font-family: arial;
     transform: scale(1.1);
-	z-index: -111;
+	z-index: -11;
   }
   
   .price {

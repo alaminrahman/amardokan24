@@ -1,5 +1,6 @@
 
 
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -29,148 +30,100 @@
         <div class="container">
             <div class="row">
 
+                 <div class="col-md-3">
+                     <div class="left_side" >
+                         <ul>
+                            <hr/>
+                             <li><a href="admin_panel.php">Admin List</a></li>
+                             <hr/>
+                             <li><a href="view_customer.php">View Customer</a></li>
+                             <hr/>
+                             <li><a href="#">Add Customer</a></li>
+                             <hr/>
+                             <li><a href="#">Add Prodcut</a></li>
+                             <hr/>
+                             <li><a href="#">View Order</a></li>
+                             <hr/>
+                             <li><a href="#">Today Delivery Order</a></li>
+                             <hr/>
+                             <li><a href="#">Today Order Pending</a></li>
+                             <hr/>
+                             <li><a href="#">Total Delivery</a></li>
+                             <hr/>
+                             <li><a href="#">Total Pending</a></li>
+                             <hr/>
+                             <li><a href="#">Cancel Order</a></li>
+                             <hr/>
+
+                         </ul>
+                     </div>
+                 </div>
+
+                <div class="col-md-9">
+
                     <table class="table">
                             <thead class="thead-dark">
                               <tr>
-                                <th class="hoverr" scope="col">Admin List</th>
+                              
                                 <th scope="col">admin_id</th>
                                 <th scope="col">admin_name</th>
-                                <th scope="col">email</th>
-                                <th scope="col">password</th>
+                                <th scope="col">email</th>                               
                                 <th scope="col">mobile</th>
-                                <th scope="col">address</th>
-                                <th scope="col">country</th>
-                                <th scope="col">birthday</th>
+                                <th scope="col">address</th>                           
                                 <th scope="col">picture</th>
                               </tr>
                             </thead>
+                           
+
+
                             <tbody>
-                              <tr>
-                                <th class="hoverr" style="background: rgb(37, 37, 54); color: white;" scope="row">View Customer</th>
-                                <td >admin_name</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>                                
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>                                
-                                <td>@mdo</td>
-                                <td>@mdo</td>
 
-                              </tr>
-                              <tr>
-                                <th class="hoverr" style="background: rgb(37, 37, 54); color: white;" scope="row">Add Customer</th>
-                                <td>email</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>                                
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>                                
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                              </tr>
+                        <?php 
+
+                            include 'connect.php';
+
+                            $sql = "SELECT * FROM admin_reg_table";
+                            $query = mysqli_query($conn,$sql);
+
+                            if($query){
+                                if(mysqli_num_rows($query)>0){
+                                    while ($row = mysqli_fetch_assoc($query)) {
+                                        
+                                  
+
+
+                        ?>
 
                               <tr>
-                                <th class="hoverr" style="background: rgb(37, 37, 54); color: white;" scope="row">Add Product</th>
-                                <td>password</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>                                
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>                                
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                              </tr>
-
+                                
+                                <td><?php echo $row['admin_id'] ?></td>
+                                <td><?php echo $row['name'] ?></td>
+                                <td><?php echo $row['email'] ?></td>                                
+                            
+                                <td><?php echo $row['contact'] ?></td>
+                                <td><?php echo $row['address'] ?></td>
+                                <td></td>                                
                               
-                              <tr>
-                                    <th class="hoverr" style="background: rgb(37, 37, 54); color: white;" scope="row">View Order</th>
-                                    <td>mobile</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>                                
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>                                
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                  </tr>
 
-                                  
-                              <tr>
-                                    <th class="hoverr" style="background: rgb(37, 37, 54); color: white;" scope="row">Today Order Delivery</th>
-                                    <td>address</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>                                
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>                                
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                  </tr>
+                              </tr>
+                            
+                        <?php
+                              }
+                                }
+                            }
 
+                        ?>
                                   
-                              <tr>
-                                    <th class="hoverr" style="background: rgb(37, 37, 54); color: white;" scope="row">Today Order Pending</th>
-                                    <td>country</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>                                
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>                                
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                  </tr>
-
-                                  
-                              <tr>
-                                    <th class="hoverr" style="background: rgb(37, 37, 54); color: white;" scope="row">Total Delivery</th>
-                                    <td>Birthday</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>                                
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>                                
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                  </tr>
-
-                                  
-                              <tr>
-                                    <th class="hoverr" style="background: rgb(37, 37, 54); color: white;" scope="row">Total Pending</th>
-                                    <td>Picture</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>                                
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>                                
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                  </tr>
-
-                                  
-                              <tr>
-                                    <th class="hoverr" style="background: rgb(37, 37, 54); color: white;" scope="row">Total Cancel Order</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>                                
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>                                
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                  </tr>
+                             
 
                               
                             </tbody>
                           </table>
+                          </div>
+
+
+
+
 
 
             </div>

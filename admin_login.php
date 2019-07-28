@@ -1,40 +1,39 @@
 
 <?php
+  include 'connect.php';
 
-    include 'connect.php';
+  $error = '';
+  $invalid = '';
+
+  if(isset($_POST['login'])){
+
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $pass = mysqli_real_escape_string($conn, $_POST['pass']);
 
     
-   
+        
+        if(empty($email) || empty($pass)){
+          $error = "<span>The field is required</span>";
+        }
+        else{
+          $pass = md5($pass);
+          $sql = "SELECT * FROM admin_reg_table WHERE email = '$email' AND pass = '$pass'";
+          $query = mysqli_query($conn,$sql);
 
-    if(isset($_POST['login'])){
-
-      $username = $_POST['uname'];
-      $password = $_POST['pass'];
-
-      $sql = "SELECT * FROM admin_reg_table WHERE email = '$username' AND pass = '$password'";
-      $query = mysqli_query($conn,$sql);
-
-      if($query){
-        header('location:admin_panel.php');
-        echo "<script>alert('Login Success')</script>";
-      }
-      else{
-         echo "<script>alert('Userid or Password Wrong')</script>";
-      }
+          if(mysqli_num_rows($query)<0){
+            
+            header('location:index.php');
+          }
+          else{
+            $invalid = "<span>Invalid email & password</span>".mysqli_error($conn);
+          }
+        }
 
 
-    }
+  }
 
 
 ?>
-
-
-
-
-
-
-
-
 
 
 <!doctype html>
@@ -71,17 +70,22 @@
                       </div>
 
                       <div class="login_pad">
-                        <label for="uname"><b>Email</b></label>
-                        <input type="text" placeholder="Enter email" name="uname" required>
-
-                        <label for="psw"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="pass" required>
-
-                        <button type="submit" name="login">Login</button>
-                        <button type="text"><a href="admin_registration.html">Create Account</a></button>
+                        
+                                            
+                        <input type="text" placeholder="Enter email" name="email">
+                          <?= $error ;?>   <?= $invalid ;?>       
+                        <input type="password" placeholder="Enter Password" name="pass">
+                        <?= $error; ?> <?= $invalid; ?>
+                        
+                        <div class="button" style="margin-top: 20px;">
+                          
+                           <button type="submit" name="login">Login</button>
+                        </div>
+                       
+                       
                         
                         <label>
-                          <input type="checkbox" checked="checked" name="remember"> Remember me
+                          <input type="checkbox" checked="" name="remember"> Remember me
                         </label>
                       </div>
 
