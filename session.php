@@ -14,5 +14,11 @@
     $address = $row['address'];
     $email = $row['email'];
 
+    if(!isset($login_session)){
+        mysqli_close($conn);
+        header('location:customer_login.php');
+    }
+   
+
 
 ?>

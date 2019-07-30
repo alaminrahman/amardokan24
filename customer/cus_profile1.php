@@ -22,9 +22,9 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
     
-    
+    <link href="style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://bootswatch.com/4/simplex/bootstrap.min.css"/>
-    
+  
     
     <div class="container">
             <div class="row">
@@ -45,6 +45,7 @@
                                         <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);"><span><?= $login_session; ?></span></a></h2>
                                         <h6 class="d-block"><a href="javascript:void(0)">1,500</a> Video Uploads</h6>
                                         <h6 class="d-block"><a href="javascript:void(0)">300</a> Blog Posts</h6>
+                                        <h6 class="d-block"><a href="../logout.php">Logout</a></h6>
                                     </div>
                                     <div class="ml-auto">
                                         <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
