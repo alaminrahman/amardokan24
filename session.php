@@ -14,6 +14,8 @@
     $address = $row['address'];
     $email = $row['email'];
 
+
+    //atar joono login cara profile dekhte pabe na
     if(!isset($login_session)){
         mysqli_close($conn);
         header('location:customer_login.php');

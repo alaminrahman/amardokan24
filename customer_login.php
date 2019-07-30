@@ -6,6 +6,11 @@
 
 
 session_start();
+
+//atar jonno login howar por r back hobe na
+if(isset($_SESSION['login_user'])){
+  header('location:customer/cus_profile1.php');
+}
 if(isset($_POST['login'])){
  
   $email = mysqli_real_escape_string($conn,$_POST['email']);
